@@ -1,0 +1,112 @@
+INFO:     Started server process [4547]
+INFO:     Waiting for application startup.
+INFO:__main__:🚀 Starting ENHANCED LLM Backend...
+INFO:__main__:🔥 Using GPU for better AI responses!
+INFO:__main__:🧠 Attempting to load microsoft/DialoGPT-medium (355M)...
+`torch_dtype` is deprecated! Use `dtype` instead!
+WARNING:__main__:⚠️ Failed to load microsoft/DialoGPT-medium: (MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /api/models/microsoft/DialoGPT-medium/xet-read-token/7b40bb0f92c45fefa957d088000d8648e5c7fa33 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f37c7b5f0e0>: Failed to resolve \'huggingface.co\' ([Errno -3] Temporary failure in name resolution)"))'), '(Request ID: 194ac0af-fca8-43eb-b716-d8d1c24e193d)')
+INFO:__main__:🧠 Attempting to load distilgpt2 (82M)...
+WARNING:__main__:⚠️ Failed to load distilgpt2: We couldn't connect to 'https://huggingface.co' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+INFO:__main__:🧠 Attempting to load gpt2 (124M)...
+WARNING:__main__:⚠️ Failed to load gpt2: We couldn't connect to 'https://huggingface.co' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+INFO:__main__:🧠 Attempting to load bigscience/bloom-560m (560M)...
+WARNING:__main__:⚠️ Failed to load bigscience/bloom-560m: Converting from SentencePiece and Tiktoken failed, if a converter for SentencePiece is available, provide a model path with a SentencePiece tokenizer.model file.Currently available slow->fast converters: ['AlbertTokenizer', 'BartTokenizer', 'BarthezTokenizer', 'BertTokenizer', 'BigBirdTokenizer', 'BlenderbotTokenizer', 'CamembertTokenizer', 'CLIPTokenizer', 'CodeGenTokenizer', 'ConvBertTokenizer', 'DebertaTokenizer', 'DebertaV2Tokenizer', 'DistilBertTokenizer', 'DPRReaderTokenizer', 'DPRQuestionEncoderTokenizer', 'DPRContextEncoderTokenizer', 'ElectraTokenizer', 'FNetTokenizer', 'FunnelTokenizer', 'GPT2Tokenizer', 'HerbertTokenizer', 'LayoutLMTokenizer', 'LayoutLMv2Tokenizer', 'LayoutLMv3Tokenizer', 'LayoutXLMTokenizer', 'LongformerTokenizer', 'LEDTokenizer', 'LxmertTokenizer', 'MarkupLMTokenizer', 'MBartTokenizer', 'MBart50Tokenizer', 'MPNetTokenizer', 'MobileBertTokenizer', 'MvpTokenizer', 'NllbTokenizer', 'OpenAIGPTTokenizer', 'PegasusTokenizer', 'Qwen2Tokenizer', 'RealmTokenizer', 'ReformerTokenizer', 'RemBertTokenizer', 'RetriBertTokenizer', 'RobertaTokenizer', 'RoFormerTokenizer', 'SeamlessM4TTokenizer', 'SqueezeBertTokenizer', 'T5Tokenizer', 'UdopTokenizer', 'WhisperTokenizer', 'XLMRobertaTokenizer', 'XLNetTokenizer', 'SplinterTokenizer', 'XGLMTokenizer', 'LlamaTokenizer', 'CodeLlamaTokenizer', 'GemmaTokenizer', 'Phi3Tokenizer']
+ERROR:__main__:❌ Could not load any enhanced models
+INFO:     Application startup complete.
+ERROR:    [Errno 98] error while attempting to bind on address ('0.0.0.0', 8000): address already in use
+INFO:     Waiting for application shutdown.
+INFO:__main__:🛑 Shutting down Enhanced Backend...
+INFO:     Application shutdown complete.
+✅ Enhanced transformers available
+🚀 Starting ENHANCED LLM Backend - Much Better AI Interactions!
+================================================================
+✅ Better model selection (DialoGPT-medium, GPT-2, BLOOM)
+✅ Enhanced prompt engineering
+✅ Improved generation parameters
+✅ Context-aware conversations
+✅ Smart fallback responses
+✅ Better document processing
+
+🧠 This will provide MUCH better AI interactions!
+RlMTAyNjBjNGZhP1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjA4MTA4NDciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=OvD~pULMncIerSt1pxoWp88C3qFCbkuNv4cCWNFaYPDNI1tZTQ-E0l7lYAzm1FJTK-CsPeqL8e4VO7qLEFmmOZHzEMwipM6PmYEB5FWcCa-7z6bfuocpNBdUiOH2zOvnbLdNFwZYDFlzNk1Sbxmgdu9aB3srrXmKEhWqndunhO9wpUiVAl8GkERL3nY7xq5Cf~gtC3aESZm7YgXWA0t4MndYHFuejDlgI6ujcl67sYjytoG0rVt3u5DtE9nG5i0V7jxaB1YtADJJQyf1Sf~pEJ0tqcppf8KY-dV1RMZdP97Xaa-J8A7V~X5EKaqXSHX63E3~9aprvFTnLGsGAjR9gw__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:01.804847Z[0m [33m WARN[0m  [33mRetry attempt #1. Sleeping 4.249641131s before the next attempt[0m
+    [2;3mat[0m /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reqwest-retry-0.7.0/src/middleware.rs:171
+
+  [2m2025-09-04T07:06:01.893602Z[0m [33m WARN[0m  [33mReqwest(reqwest::Error { kind: Request, url: "https://transfer.xethub.hf.co/xorbs/default/29a9fef9f092ebdbeb3ea8cfb37b17cca64f5df5580ae0f801d76f440546dc57?X-Xet-Signed-Range=bytes%3D0-62964306&Expires=1756972506&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmFuc2Zlci54ZXRodWIuaGYuY28veG9yYnMvZGVmYXVsdC8yOWE5ZmVmOWYwOTJlYmRiZWIzZWE4Y2ZiMzdiMTdjY2E2NGY1ZGY1NTgwYWUwZjgwMWQ3NmY0NDA1NDZkYzU3P1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjI5NjQzMDYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=TbTlVAMFRVJ8k6WcusiIwY0bOgSpiXEHDD~JxJIsM0uHNtxBinxwD5MEwloVhwq73obAFjEBLX4tVTpQlmlZ5kC~kH8Fk1r5gR4h9PnhKu4yyGp-q0~-~XBSi3EQzYO~Uykp8w4~~ibnJU-r2OISgtltc1-3VAQAEtLZbapkLYnkpx9znSr2lxsvyn-yajOitUJsyOjVoZ378zSxRbh5kQL3QyoRs7H0zbrLPKo1fpwIbjKQAWEI~ib6DOKWyiLuTBmBhfuacgffMhRHQ49CpgEbFbQCW6T3lF3ass6Ks4Ax3MsRCdt5ySa9t13Zp6lXeT-VTprheei2vqnu8U2R5Q__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:01.893636Z[0m [33m WARN[0m  [33mRetry attempt #1. Sleeping 1.783475412s before the next attempt[0m
+    [2;3mat[0m /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reqwest-retry-0.7.0/src/middleware.rs:171
+
+  [2m2025-09-04T07:06:03.679631Z[0m [33m WARN[0m  [33mReqwest(reqwest::Error { kind: Request, url: "https://transfer.xethub.hf.co/xorbs/default/29a9fef9f092ebdbeb3ea8cfb37b17cca64f5df5580ae0f801d76f440546dc57?X-Xet-Signed-Range=bytes%3D0-62964306&Expires=1756972506&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmFuc2Zlci54ZXRodWIuaGYuY28veG9yYnMvZGVmYXVsdC8yOWE5ZmVmOWYwOTJlYmRiZWIzZWE4Y2ZiMzdiMTdjY2E2NGY1ZGY1NTgwYWUwZjgwMWQ3NmY0NDA1NDZkYzU3P1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjI5NjQzMDYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=TbTlVAMFRVJ8k6WcusiIwY0bOgSpiXEHDD~JxJIsM0uHNtxBinxwD5MEwloVhwq73obAFjEBLX4tVTpQlmlZ5kC~kH8Fk1r5gR4h9PnhKu4yyGp-q0~-~XBSi3EQzYO~Uykp8w4~~ibnJU-r2OISgtltc1-3VAQAEtLZbapkLYnkpx9znSr2lxsvyn-yajOitUJsyOjVoZ378zSxRbh5kQL3QyoRs7H0zbrLPKo1fpwIbjKQAWEI~ib6DOKWyiLuTBmBhfuacgffMhRHQ49CpgEbFbQCW6T3lF3ass6Ks4Ax3MsRCdt5ySa9t13Zp6lXeT-VTprheei2vqnu8U2R5Q__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:03.679669Z[0m [33m WARN[0m  [33mRetry attempt #2. Sleeping 11.880988347s before the next attempt[0m
+    [2;3mat[0m /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reqwest-retry-0.7.0/src/middleware.rs:171
+
+  [2m2025-09-04T07:06:06.056651Z[0m [33m WARN[0m  [33mReqwest(reqwest::Error { kind: Request, url: "https://transfer.xethub.hf.co/xorbs/default/70d8d0b9550afdf22d676f383d1c043f1cea863fe2b784e5444c0de10260c4fa?X-Xet-Signed-Range=bytes%3D0-60810847&Expires=1756972506&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmFuc2Zlci54ZXRodWIuaGYuY28veG9yYnMvZGVmYXVsdC83MGQ4ZDBiOTU1MGFmZGYyMmQ2NzZmMzgzZDFjMDQzZjFjZWE4NjNmZTJiNzg0ZTU0NDRjMGRlMTAyNjBjNGZhP1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjA4MTA4NDciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=OvD~pULMncIerSt1pxoWp88C3qFCbkuNv4cCWNFaYPDNI1tZTQ-E0l7lYAzm1FJTK-CsPeqL8e4VO7qLEFmmOZHzEMwipM6PmYEB5FWcCa-7z6bfuocpNBdUiOH2zOvnbLdNFwZYDFlzNk1Sbxmgdu9aB3srrXmKEhWqndunhO9wpUiVAl8GkERL3nY7xq5Cf~gtC3aESZm7YgXWA0t4MndYHFuejDlgI6ujcl67sYjytoG0rVt3u5DtE9nG5i0V7jxaB1YtADJJQyf1Sf~pEJ0tqcppf8KY-dV1RMZdP97Xaa-J8A7V~X5EKaqXSHX63E3~9aprvFTnLGsGAjR9gw__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:06.056711Z[0m [33m WARN[0m  [33mRetry attempt #2. Sleeping 10.369199604s before the next attempt[0m
+    [2;3mat[0m /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reqwest-retry-0.7.0/src/middleware.rs:171
+
+  [2m2025-09-04T07:06:15.562950Z[0m [33m WARN[0m  [33mReqwest(reqwest::Error { kind: Request, url: "https://transfer.xethub.hf.co/xorbs/default/29a9fef9f092ebdbeb3ea8cfb37b17cca64f5df5580ae0f801d76f440546dc57?X-Xet-Signed-Range=bytes%3D0-62964306&Expires=1756972506&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmFuc2Zlci54ZXRodWIuaGYuY28veG9yYnMvZGVmYXVsdC8yOWE5ZmVmOWYwOTJlYmRiZWIzZWE4Y2ZiMzdiMTdjY2E2NGY1ZGY1NTgwYWUwZjgwMWQ3NmY0NDA1NDZkYzU3P1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjI5NjQzMDYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=TbTlVAMFRVJ8k6WcusiIwY0bOgSpiXEHDD~JxJIsM0uHNtxBinxwD5MEwloVhwq73obAFjEBLX4tVTpQlmlZ5kC~kH8Fk1r5gR4h9PnhKu4yyGp-q0~-~XBSi3EQzYO~Uykp8w4~~ibnJU-r2OISgtltc1-3VAQAEtLZbapkLYnkpx9znSr2lxsvyn-yajOitUJsyOjVoZ378zSxRbh5kQL3QyoRs7H0zbrLPKo1fpwIbjKQAWEI~ib6DOKWyiLuTBmBhfuacgffMhRHQ49CpgEbFbQCW6T3lF3ass6Ks4Ax3MsRCdt5ySa9t13Zp6lXeT-VTprheei2vqnu8U2R5Q__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:15.563012Z[0m [33m WARN[0m  [33mRetry attempt #3. Sleeping 11.862412236s before the next attempt[0m
+    [2;3mat[0m /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reqwest-retry-0.7.0/src/middleware.rs:171
+
+  [2m2025-09-04T07:06:16.427640Z[0m [33m WARN[0m  [33mReqwest(reqwest::Error { kind: Request, url: "https://transfer.xethub.hf.co/xorbs/default/70d8d0b9550afdf22d676f383d1c043f1cea863fe2b784e5444c0de10260c4fa?X-Xet-Signed-Range=bytes%3D0-60810847&Expires=1756972506&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmFuc2Zlci54ZXRodWIuaGYuY28veG9yYnMvZGVmYXVsdC83MGQ4ZDBiOTU1MGFmZGYyMmQ2NzZmMzgzZDFjMDQzZjFjZWE4NjNmZTJiNzg0ZTU0NDRjMGRlMTAyNjBjNGZhP1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjA4MTA4NDciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=OvD~pULMncIerSt1pxoWp88C3qFCbkuNv4cCWNFaYPDNI1tZTQ-E0l7lYAzm1FJTK-CsPeqL8e4VO7qLEFmmOZHzEMwipM6PmYEB5FWcCa-7z6bfuocpNBdUiOH2zOvnbLdNFwZYDFlzNk1Sbxmgdu9aB3srrXmKEhWqndunhO9wpUiVAl8GkERL3nY7xq5Cf~gtC3aESZm7YgXWA0t4MndYHFuejDlgI6ujcl67sYjytoG0rVt3u5DtE9nG5i0V7jxaB1YtADJJQyf1Sf~pEJ0tqcppf8KY-dV1RMZdP97Xaa-J8A7V~X5EKaqXSHX63E3~9aprvFTnLGsGAjR9gw__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:16.427720Z[0m [33m WARN[0m  [33mRetry attempt #3. Sleeping 6.280868005s before the next attempt[0m
+    [2;3mat[0m /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reqwest-retry-0.7.0/src/middleware.rs:171
+
+  [2m2025-09-04T07:06:22.710809Z[0m [33m WARN[0m  [33mReqwest(reqwest::Error { kind: Request, url: "https://transfer.xethub.hf.co/xorbs/default/70d8d0b9550afdf22d676f383d1c043f1cea863fe2b784e5444c0de10260c4fa?X-Xet-Signed-Range=bytes%3D0-60810847&Expires=1756972506&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmFuc2Zlci54ZXRodWIuaGYuY28veG9yYnMvZGVmYXVsdC83MGQ4ZDBiOTU1MGFmZGYyMmQ2NzZmMzgzZDFjMDQzZjFjZWE4NjNmZTJiNzg0ZTU0NDRjMGRlMTAyNjBjNGZhP1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjA4MTA4NDciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=OvD~pULMncIerSt1pxoWp88C3qFCbkuNv4cCWNFaYPDNI1tZTQ-E0l7lYAzm1FJTK-CsPeqL8e4VO7qLEFmmOZHzEMwipM6PmYEB5FWcCa-7z6bfuocpNBdUiOH2zOvnbLdNFwZYDFlzNk1Sbxmgdu9aB3srrXmKEhWqndunhO9wpUiVAl8GkERL3nY7xq5Cf~gtC3aESZm7YgXWA0t4MndYHFuejDlgI6ujcl67sYjytoG0rVt3u5DtE9nG5i0V7jxaB1YtADJJQyf1Sf~pEJ0tqcppf8KY-dV1RMZdP97Xaa-J8A7V~X5EKaqXSHX63E3~9aprvFTnLGsGAjR9gw__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:22.710903Z[0m [33m WARN[0m  [33mRetry attempt #4. Sleeping 33.328274418s before the next attempt[0m
+    [2;3mat[0m /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reqwest-retry-0.7.0/src/middleware.rs:171
+
+  [2m2025-09-04T07:06:27.427490Z[0m [33m WARN[0m  [33mReqwest(reqwest::Error { kind: Request, url: "https://transfer.xethub.hf.co/xorbs/default/29a9fef9f092ebdbeb3ea8cfb37b17cca64f5df5580ae0f801d76f440546dc57?X-Xet-Signed-Range=bytes%3D0-62964306&Expires=1756972506&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmFuc2Zlci54ZXRodWIuaGYuY28veG9yYnMvZGVmYXVsdC8yOWE5ZmVmOWYwOTJlYmRiZWIzZWE4Y2ZiMzdiMTdjY2E2NGY1ZGY1NTgwYWUwZjgwMWQ3NmY0NDA1NDZkYzU3P1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjI5NjQzMDYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=TbTlVAMFRVJ8k6WcusiIwY0bOgSpiXEHDD~JxJIsM0uHNtxBinxwD5MEwloVhwq73obAFjEBLX4tVTpQlmlZ5kC~kH8Fk1r5gR4h9PnhKu4yyGp-q0~-~XBSi3EQzYO~Uykp8w4~~ibnJU-r2OISgtltc1-3VAQAEtLZbapkLYnkpx9znSr2lxsvyn-yajOitUJsyOjVoZ378zSxRbh5kQL3QyoRs7H0zbrLPKo1fpwIbjKQAWEI~ib6DOKWyiLuTBmBhfuacgffMhRHQ49CpgEbFbQCW6T3lF3ass6Ks4Ax3MsRCdt5ySa9t13Zp6lXeT-VTprheei2vqnu8U2R5Q__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:27.427545Z[0m [33m WARN[0m  [33mRetry attempt #4. Sleeping 4.590432594s before the next attempt[0m
+    [2;3mat[0m /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/reqwest-retry-0.7.0/src/middleware.rs:171
+
+  [2m2025-09-04T07:06:32.019437Z[0m [33m WARN[0m  [33mReqwest(reqwest::Error { kind: Request, url: "https://transfer.xethub.hf.co/xorbs/default/29a9fef9f092ebdbeb3ea8cfb37b17cca64f5df5580ae0f801d76f440546dc57?X-Xet-Signed-Range=bytes%3D0-62964306&Expires=1756972506&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmFuc2Zlci54ZXRodWIuaGYuY28veG9yYnMvZGVmYXVsdC8yOWE5ZmVmOWYwOTJlYmRiZWIzZWE4Y2ZiMzdiMTdjY2E2NGY1ZGY1NTgwYWUwZjgwMWQ3NmY0NDA1NDZkYzU3P1gtWGV0LVNpZ25lZC1SYW5nZT1ieXRlcyUzRDAtNjI5NjQzMDYiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NTY5NzI1MDZ9fX1dfQ__&Signature=TbTlVAMFRVJ8k6WcusiIwY0bOgSpiXEHDD~JxJIsM0uHNtxBinxwD5MEwloVhwq73obAFjEBLX4tVTpQlmlZ5kC~kH8Fk1r5gR4h9PnhKu4yyGp-q0~-~XBSi3EQzYO~Uykp8w4~~ibnJU-r2OISgtltc1-3VAQAEtLZbapkLYnkpx9znSr2lxsvyn-yajOitUJsyOjVoZ378zSxRbh5kQL3QyoRs7H0zbrLPKo1fpwIbjKQAWEI~ib6DOKWyiLuTBmBhfuacgffMhRHQ49CpgEbFbQCW6T3lF3ass6Ks4Ax3MsRCdt5ySa9t13Zp6lXeT-VTprheei2vqnu8U2R5Q__&Key-Pair-Id=K2L8F4GPSG1IFC", source: hyper_util::client::legacy::Error(Connect, ConnectError("dns error", Custom { kind: Uncategorized, error: "failed to lookup address information: Temporary failure in name resolution" })) }). Retrying...[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/http_client.rs:226
+
+  [2m2025-09-04T07:06:32.019537Z[0m [31mERROR[0m  [31mFatal Client Error: s3::get_range api call failed (retry 1): Request failed after 5 retries[0m
+    [2;3mat[0m /home/runner/work/xet-core/xet-core/cas_client/src/retry_wrapper.rs:74
+
+WARNING:__main__:⚠️ Failed to load microsoft/DialoGPT-medium: Can't load the model for 'microsoft/DialoGPT-medium'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'microsoft/DialoGPT-medium' is the correct path to a directory containing a file named pytorch_model.bin, tf_model.h5, model.ckpt or flax_model.msgpack.
+INFO:__main__:🧠 Attempting to load distilgpt2 (82M)...
+WARNING:__main__:⚠️ Failed to load distilgpt2: We couldn't connect to 'https://huggingface.co' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+INFO:__main__:🧠 Attempting to load gpt2 (124M)...
+WARNING:__main__:⚠️ Failed to load gpt2: We couldn't connect to 'https://huggingface.co' to load the files, and couldn't find them in the cached files.
+Check your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+INFO:__main__:🧠 Attempting to load bigscience/bloom-560m (560M)...
+WARNING:__main__:⚠️ Failed to load bigscience/bloom-560m: Converting from SentencePiece and Tiktoken failed, if a converter for SentencePiece is available, provide a model path with a SentencePiece tokenizer.model file.Currently available slow->fast converters: ['AlbertTokenizer', 'BartTokenizer', 'BarthezTokenizer', 'BertTokenizer', 'BigBirdTokenizer', 'BlenderbotTokenizer', 'CamembertTokenizer', 'CLIPTokenizer', 'CodeGenTokenizer', 'ConvBertTokenizer', 'DebertaTokenizer', 'DebertaV2Tokenizer', 'DistilBertTokenizer', 'DPRReaderTokenizer', 'DPRQuestionEncoderTokenizer', 'DPRContextEncoderTokenizer', 'ElectraTokenizer', 'FNetTokenizer', 'FunnelTokenizer', 'GPT2Tokenizer', 'HerbertTokenizer', 'LayoutLMTokenizer', 'LayoutLMv2Tokenizer', 'LayoutLMv3Tokenizer', 'LayoutXLMTokenizer', 'LongformerTokenizer', 'LEDTokenizer', 'LxmertTokenizer', 'MarkupLMTokenizer', 'MBartTokenizer', 'MBart50Tokenizer', 'MPNetTokenizer', 'MobileBertTokenizer', 'MvpTokenizer', 'NllbTokenizer', 'OpenAIGPTTokenizer', 'PegasusTokenizer', 'Qwen2Tokenizer', 'RealmTokenizer', 'ReformerTokenizer', 'RemBertTokenizer', 'RetriBertTokenizer', 'RobertaTokenizer', 'RoFormerTokenizer', 'SeamlessM4TTokenizer', 'SqueezeBertTokenizer', 'T5Tokenizer', 'UdopTokenizer', 'WhisperTokenizer', 'XLMRobertaTokenizer', 'XLNetTokenizer', 'SplinterTokenizer', 'XGLMTokenizer', 'LlamaTokenizer', 'CodeLlamaTokenizer', 'GemmaTokenizer', 'Phi3Tokenizer']
+ERROR:__main__:❌ Could not load any enhanced models
+INFO:     Application startup complete.
+ERROR:    [Errno 98] error while attempting to bind on address ('0.0.0.0', 8000): address already in use
+INFO:     Waiting for application shutdown.
+INFO:__main__:🛑 Shutting down Enhanced Backend...
+INFO:     Application shutdown complete.
+✅ Enhanced transformers available
+🚀 Starting ENHANCED LLM Backend - Much Better AI Interactions!
+================================================================
+✅ Better model selection (DialoGPT-medium, GPT-2, BLOOM)
+✅ Enhanced prompt engineering
+✅ Improved generation parameters
+✅ Context-aware conversations
+✅ Smart fallback responses
+✅ Better document processing
+
+🧠 This will provide MUCH better AI interactions!

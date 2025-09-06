@@ -1,0 +1,26 @@
+INFO:     Started server process [4111]
+INFO:     Waiting for application startup.
+INFO:__main__:🚀 Starting Fixed Quantized LLM Backend...
+INFO:__main__:📥 Loading models safely...
+INFO:__main__:🔧 Using CUDA GPU
+INFO:accelerate.utils.modeling:We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cuda:0
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+INFO:__main__:✅ All models loaded successfully!
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+✅ PyTorch and Transformers available
+🚀 Starting FIXED Backend...
+✅ All FastAPI warnings resolved
+✅ Model loading with accelerate
+✅ New lifespan event handlers
+✅ Proper error handling
+INFO:     127.0.0.1:38120 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38124 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38134 - "GET /models/status HTTP/1.1" 200 OK
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+INFO:     127.0.0.1:59612 - "POST /chat/quantized HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52550 - "POST /chat/quantized HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48970 - "POST /chat/quantized HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35578 - "POST /documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38824 - "POST /chat/quantized HTTP/1.1" 200 OK

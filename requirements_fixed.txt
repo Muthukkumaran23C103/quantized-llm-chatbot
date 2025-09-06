@@ -1,0 +1,22 @@
+# Fixed Gradio (latest version)
+gradio>=4.44.1
+
+# AI/ML with accelerate (fixes model loading error)
+torch>=2.0.0
+transformers>=4.35.0
+accelerate>=0.24.0
+sentence-transformers>=2.2.0
+
+# FastAPI with updated syntax
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
+
+# Language processing
+langdetect>=1.0.9
+googletrans==4.0.0
+
+# API utilities  
+requests>=2.31.0
+python-multipart>=0.0.6
+pydantic>=2.5.0
+python-dotenv>=1.0.0

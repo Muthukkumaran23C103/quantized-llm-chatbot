@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI Study Buddy - Interactive Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: rainbow 3s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        /* Login section */
+        .login-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInUp 1s ease-out;
+        }
+
+        .login-form {
+            display: flex;
+            gap: 15px;
+            align-items: end;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .input-group label {
+            display: block;
+            color: white;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6);
+        }
+
+        /* Status indicator */
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 500;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .status.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .status.success {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .status.error {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+
+        /* Main content */
+        .main-content {
+            display: none;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 5px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Chat interface */
+        .chat-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            margin-bottom: 15px;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .message.bot {
+            text-align: left;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.bot .message-bubble {
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            color: white;
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            resize: none;
+            font-family: inherit;
+            font-size: 14px;
+            max-height: 100px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+
+        .send-btn {
+            padding: 12px 15px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 45px;
+            height: 45px;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ECDC4;
+            animation: typingDots 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        /* Upload area */
+        .upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover, .upload-area.dragover {
+            border-color: #4ECDC4;
+            background: rgba(78, 205, 196, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.7;
+        }
+
+        /* Search interface */
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .search-results {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .search-result {
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .search-result:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .result-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .result-score {
+            color: #4ECDC4;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes typingDots {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .login-form {
+                flex-direction: column;
+            }
+            
+            .input-group {
+                min-width: auto;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                flex: none;
+                min-width: calc(50% - 2.5px);
+            }
+        }
+
+        /* Loading spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">🤖 AI Study Buddy</h1>
+            <p class="subtitle">Your intelligent learning companion powered by advanced AI!</p>
+        </div>
+
+        <!-- Login Section -->
+        <div class="login-section" id="loginSection">
+            <h3 style="color: white; text-align: center; margin-bottom: 20px;">🔐 Login to Get Started</h3>
+            <form class="login-form" id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="input-field" placeholder="Enter username (try: admin)" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="input-field" placeholder="Enter password (try: secret)" required>
+                </div>
+                <button type="submit" class="btn btn-primary">🚀 Login & Start Learning!</button>
+            </form>
+            <div class="status" id="loginStatus"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" data-tab="chat">💬 AI Chat</button>
+                <button class="tab" data-tab="upload">📁 Upload Materials</button>
+                <button class="tab" data-tab="search">🔍 Smart Search</button>
+                <button class="tab" data-tab="help">❓ How to Use</button>
+            </div>
+
+            <!-- Chat Tab -->
+            <div class="tab-content active" id="chat">
+                <h3 style="color: white; text-align: center; margin-bottom: 20px;">Chat with your AI study buddy!</h3>
+                
+                <div class="chat-container" id="chatContainer">
+                    <div class="message bot">
+                        <div class="message-bubble">
+                            👋 Hi there! I'm your AI Study Buddy! Upload some study materials and I'll help you learn. Ask me anything! 🎓
+                        </div>
+                    </div>
+                </div>
+
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="message-bubble" style="background: rgba(78, 205, 196, 0.2); color: #4ECDC4;">
+                        🤖 Thinking
+                        <div class="typing-dots">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <textarea id="chatInput" class="chat-input" placeholder="Ask me anything! Try: 'Explain quantum physics simply' or 'Help me with math'" rows="1"></textarea>
+                    <button id="sendBtn" class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+
+                <div style="margin-top: 15px; text-align: center;">
+                    <label style="color: white;">
+                        <input type="checkbox" id="useContext" checked> 📚 Use uploaded documents for context
+                    </label>
+                    <button id="clearChat" class="btn btn-secondary" style="margin-left: 15px;">🗑️ Clear Chat</button>
+                </div>
+            </div>
+
+            <!-- Upload Tab -->
+            <div class="tab-content" id="upload">
+                <h3 style="color: white; text-align: center; margin-bottom: 20px;">Upload your study materials!</h3>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h4>Drag & Drop your files here</h4>
+                    <p>or click to select files</p>
+                    <p style="font-size: 12px; opacity: 0.7; margin-top: 10px;">Supported: .txt, .md, .py, .json</p>
+                    <input type="file" id="fileInput" style="display: none;" accept=".txt,.md,.py,.json" multiple>
+                </div>
+
+                <div class="input-group" style="margin-bottom: 15px;">
+                    <label for="filename" style="color: white;">📝 Document Name (optional)</label>
+                    <input type="text" id="filename" class="input-field" placeholder="e.g., 'Biology Chapter 5' or 'Python Notes'">
+                </div>
+
+                <button id="uploadBtn" class="btn btn-secondary" style="width: 100%;">📤 Upload Document</button>
+
+                <div class="status" id="uploadStatus" style="margin-top: 15px;"></div>
+            </div>
+
+            <!-- Search Tab -->
+            <div class="tab-content" id="search">
+                <h3 style="color: white; text-align: center; margin-bottom: 20px;">Search through your documents with AI!</h3>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="e.g., 'photosynthesis process' or 'python loops examples'">
+                    <button id="searchBtn" class="btn btn-primary" style="width: 100%;">🔍 Smart Search</button>
+                </div>
+
+                <div class="search-results" id="searchResults" style="display: none;">
+                    <!-- Search results will be populated here -->
+                </div>
+            </div>
+
+            <!-- Help Tab -->
+            <div class="tab-content" id="help">
+                <div style="color: white;">
+                    <h3 style="text-align: center; margin-bottom: 20px;">🌟 How to Make the Most of Your AI Study Buddy</h3>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 20px; margin-bottom: 20px;">
+                        <h4>🚀 Getting Started</h4>
+                        <ol style="margin-left: 20px; margin-top: 10px;">
+                            <li>Login with your credentials (username: admin, password: secret for demo)</li>
+                            <li>Upload your study materials in the "Upload" tab</li>
+                            <li>Start chatting with your AI study buddy!</li>
+                        </ol>
+                    </div>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 20px; margin-bottom: 20px;">
+                        <h4>💬 Chat Features</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>Context-Aware:</strong> Uses your uploaded documents for better answers</li>
+                            <li><strong>Real-time:</strong> Get instant responses to your questions</li>
+                            <li><strong>Smart:</strong> Understands complex topics and explains simply</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 20px; margin-bottom: 20px;">
+                        <h4>🔍 Search Features</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>Semantic Search:</strong> Finds relevant info even without exact keywords</li>
+                            <li><strong>Relevance Scoring:</strong> Shows how relevant each result is</li>
+                            <li><strong>Quick Preview:</strong> See document previews instantly</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 20px;">
+                        <h4>🎯 Pro Tips</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Upload lecture notes, textbooks, and articles for personalized help</li>
+                            <li>Ask follow-up questions to dive deeper into topics</li>
+                            <li>Use specific examples in your questions for better answers</li>
+                            <li>Try different search terms if you don't find what you're looking for</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        class AIStudyBuddy {
+            constructor() {
+                this.apiBase = 'http://localhost:8000';
+                this.authToken = null;
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.createBackgroundAnimation();
+                this.setupTabSwitching();
+                this.setupFileUpload();
+                this.setupChat();
+                this.setupSearch();
+            }
+
+            createBackgroundAnimation() {
+                const bgAnimation = document.getElementById('bgAnimation');
+                
+                setInterval(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.width = particle.style.height = Math.random() * 10 + 5 + 'px';
+                    particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+                    
+                    bgAnimation.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 25000);
+                }, 300);
+            }
+
+            setupEventListeners() {
+                // Login form
+                document.getElementById('loginForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleLogin();
+                });
+
+                // Chat input
+                document.getElementById('chatInput').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+
+                document.getElementById('sendBtn').addEventListener('click', () => {
+                    this.sendMessage();
+                });
+
+                document.getElementById('clearChat').addEventListener('click', () => {
+                    this.clearChat();
+                });
+
+                // Search
+                document.getElementById('searchBtn').addEventListener('click', () => {
+                    this.performSearch();
+                });
+
+                document.getElementById('searchInput').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.performSearch();
+                    }
+                });
+            }
+
+            setupTabSwitching() {
+                const tabs = document.querySelectorAll('.tab');
+                const tabContents = document.querySelectorAll('.tab-content');
+
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        tabContents.forEach(tc => tc.classList.remove('active'));
+                        
+                        tab.classList.add('active');
+                        document.getElementById(tab.dataset.tab).classList.add('active');
+                    });
+                });
+            }
+
+            setupFileUpload() {
+                const uploadArea = document.getElementById('uploadArea');
+                const fileInput = document.getElementById('fileInput');
+                const uploadBtn = document.getElementById('uploadBtn');
+
+                uploadArea.addEventListener('click', () => fileInput.click());
+                
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('dragover');
+                });
+
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('dragover');
+                });
+
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('dragover');
+                    fileInput.files = e.dataTransfer.files;
+                });
+
+                uploadBtn.addEventListener('click', () => {
+                    this.uploadDocument();
+                });
+            }
+
+            setupChat() {
+                const chatInput = document.getElementById('chatInput');
+                
+                // Auto-resize textarea
+                chatInput.addEventListener('input', () => {
+                    chatInput.style.height = 'auto';
+                    chatInput.style.height = Math.min(chatInput.scrollHeight, 100) + 'px';
+                });
+            }
+
+            setupSearch() {
+                // Search functionality already handled in setupEventListeners
+            }
+
+            async handleLogin() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const status = document.getElementById('loginStatus');
+
+                try {
+                    const response = await fetch(`${this.apiBase}/auth/login`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username, password }),
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        this.authToken = data.access_token;
+                        
+                        this.showStatus(status, '🎉 Welcome to the AI Study Buddy! Let\'s learn together!', 'success');
+                        
+                        setTimeout(() => {
+                            document.getElementById('loginSection').style.display = 'none';
+                            document.getElementById('mainContent').style.display = 'block';
+                        }, 1500);
+                    } else {
+                        this.showStatus(status, '❌ Invalid credentials. Try again!', 'error');
+                    }
+                } catch (error) {
+                    this.showStatus(status, `🚫 Connection error: ${error.message}`, 'error');
+                }
+            }
+
+            async sendMessage() {
+                const input = document.getElementById('chatInput');
+                const message = input.value.trim();
+                const useContext = document.getElementById('useContext').checked;
+
+                if (!message) return;
+
+                // Add user message
+                this.addMessage(message, 'user');
+                input.value = '';
+                input.style.height = 'auto';
+
+                // Show typing indicator
+                this.showTypingIndicator();
+
+                try {
+                    const response = await fetch(`${this.apiBase}/chat`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${this.authToken}`,
+                        },
+                        body: JSON.stringify({
+                            message: message,
+                            use_context: useContext,
+                            max_context_docs: 3
+                        }),
+                    });
+
+                    this.hideTypingIndicator();
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        let botResponse = data.bot_response;
+                        
+                        // Add context info if available
+                        if (data.context_documents && data.context_documents.length > 0) {
+                            botResponse += `\n\n📚 *Used ${data.context_documents.length} documents for context*`;
+                        }
+                        
+                        // Add response time
+                        if (data.response_time_ms) {
+                            botResponse += `\n\n⚡ *Responded in ${data.response_time_ms}ms*`;
+                        }
+
+                        this.addMessage(botResponse, 'bot');
+                    } else {
+                        this.addMessage('🚨 Oops! Something went wrong. Please try again!', 'bot');
+                    }
+                } catch (error) {
+                    this.hideTypingIndicator();
+                    this.addMessage(`🚫 Connection error: ${error.message}`, 'bot');
+                }
+            }
+
+            addMessage(content, sender) {
+                const chatContainer = document.getElementById('chatContainer');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+                
+                const bubbleDiv = document.createElement('div');
+                bubbleDiv.className = 'message-bubble';
+                bubbleDiv.textContent = content;
+                
+                messageDiv.appendChild(bubbleDiv);
+                chatContainer.appendChild(messageDiv);
+                
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            showTypingIndicator() {
+                document.getElementById('typingIndicator').style.display = 'flex';
+                document.getElementById('chatContainer').scrollTop = document.getElementById('chatContainer').scrollHeight;
+            }
+
+            hideTypingIndicator() {
+                document.getElementById('typingIndicator').style.display = 'none';
+            }
+
+            clearChat() {
+                const chatContainer = document.getElementById('chatContainer');
+                chatContainer.innerHTML = `
+                    <div class="message bot">
+                        <div class="message-bubble">
+                            👋 Hi there! I'm your AI Study Buddy! Upload some study materials and I'll help you learn. Ask me anything! 🎓
+                        </div>
+                    </div>
+                `;
+            }
+
+            async uploadDocument() {
+                const fileInput = document.getElementById('fileInput');
+                const filename = document.getElementById('filename').value;
+                const status = document.getElementById('uploadStatus');
+
+                if (!fileInput.files.length) {
+                    this.showStatus(status, '📁 Please select a file to upload!', 'error');
+                    return;
+                }
+
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = async (e) => {
+                    try {
+                        const response = await fetch(`${this.apiBase}/documents`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${this.authToken}`,
+                            },
+                            body: JSON.stringify({
+                                filename: filename || file.name,
+                                content: e.target.result,
+                                metadata: { 
+                                    source: 'student_upload', 
+                                    timestamp: Date.now(),
+                                    original_filename: file.name
+                                }
+                            }),
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            const analysis = data.analysis;
+                            
+                            const message = `🎉 Document uploaded successfully!\n\n📊 Analysis Results:\n- 📝 Words: ${analysis.word_count}\n- 🔍 Keywords: ${analysis.keywords.length}\n- 🏷️ Entities: ${analysis.entities_found}\n- ⚡ Processed in: ${data.processing_time_ms}ms\n\n🧠 Top Keywords: ${analysis.keywords.join(', ')}\n\n✅ Your document is now available for AI chat context!`;
+                            
+                            this.showStatus(status, message, 'success');
+                            
+                            // Clear form
+                            fileInput.value = '';
+                            document.getElementById('filename').value = '';
+                        } else {
+                            this.showStatus(status, '🚨 Upload failed. Please try again!', 'error');
+                        }
+                    } catch (error) {
+                        this.showStatus(status, `🚫 Upload error: ${error.message}`, 'error');
+                    }
+                };
+
+                reader.readAsText(file);
+            }
+
+            async performSearch() {
+                const query = document.getElementById('searchInput').value.trim();
+                const resultsContainer = document.getElementById('searchResults');
+
+                if (!query) return;
+
+                resultsContainer.style.display = 'block';
+                resultsContainer.innerHTML = '<div style="text-align: center; padding: 20px;"><div class="spinner"></div>Searching...</div>';
+
+                try {
+                    const response = await fetch(`${this.apiBase}/search`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${this.authToken}`,
+                        },
+                        body: JSON.stringify({
+                            query: query,
+                            limit: 5
+                        }),
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        
+                        if (data.total_results === 0) {
+                            resultsContainer.innerHTML = '<div style="text-align: center; padding: 20px; color: #666;">🤷‍♀️ No documents found matching your search. Try different keywords!</div>';
+                            return;
+                        }
+
+                        let html = `<h4 style="color: #333; margin-bottom: 15px;">🔍 Found ${data.total_results} relevant documents:</h4>`;
+                        
+                        data.results.forEach((result, index) => {
+                            const similarityPercentage = Math.round(result.similarity_score * 100);
+                            html += `
+                                <div class="search-result">
+                                    <div class="result-title">${index + 1}. ${result.filename}</div>
+                                    <div class="result-score">📊 Relevance: ${similarityPercentage}%</div>
+                                    <div style="color: #666; font-size: 14px;">${result.content_preview}</div>
+                                </div>
+                            `;
+                        });
+
+                        html += `<div style="text-align: center; color: #999; font-size: 12px; margin-top: 15px;">⚡ Search completed in ${data.search_time_ms}ms</div>`;
+                        
+                        resultsContainer.innerHTML = html;
+                    } else {
+                        resultsContainer.innerHTML = '<div style="text-align: center; padding: 20px; color: #F44336;">🚨 Search failed. Please try again!</div>';
+                    }
+                } catch (error) {
+                    resultsContainer.innerHTML = `<div style="text-align: center; padding: 20px; color: #F44336;">🚫 Search error: ${error.message}</div>`;
+                }
+            }
+
+            showStatus(element, message, type) {
+                element.textContent = message;
+                element.className = `status ${type} show`;
+                
+                setTimeout(() => {
+                    element.classList.remove('show');
+                }, 5000);
+            }
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            new AIStudyBuddy();
+        });
+    </script>
+</body>
+</html>
